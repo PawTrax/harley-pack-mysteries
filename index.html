@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Harley Pack Mysteries</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Comic Sans MS', 'Chalkboard SE', 'Arial Rounded MT Bold', cursive, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Navigation */
+        nav {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .logo {
+            font-size: 1.8em;
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-links button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links button:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .nav-links button.active {
+            background: #764ba2;
+        }
+        
+        /* Page Sections */
+        .page {
+            display: none;
+        }
+        
+        .page.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Homepage */
+        .hero {
+            background: white;
+            border-radius: 20px;
+            padding: 60px 40px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .hero h1 {
+            font-size: 3.5em;
+            color: #667eea;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .hero p {
+            font-size: 1.3em;
+            color: #555;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            line-height: 1.8;
+        }
+        
+        .hero-image {
+            width: 100%;
+            max-width: 600px;
+            height: 300px;
+            margin: 30px auto;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px dashed #ccc;
+            color: #666;
+        }
+        
+        .cta-button {
+            background: #764ba2;
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            border-radius: 30px;
+            font-size: 1.3em;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            margin: 10px;
+        }
+        
+        .cta-button:hover {
+            background: #667eea;
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        
+        /* Story Library */
+        .story-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .story-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .story-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .story-thumbnail {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3em;
+        }
+        
+        .story-card h3 {
+            color: #667eea;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        
+        .story-card p {
+            color: #555;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .story-status {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        
+        .status-available {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status-coming {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .read-button, .download-button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: inherit;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .read-button:hover, .download-button:hover {
+            background: #764ba2;
+        }
+        
+        .download-button {
+            background: #28a745;
+        }
+        
+        .download-button:hover {
+            background: #218838;
+        }
+        
+        /* Story Page */
+        .story-header {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        
+        .story-header h1 {
+            font-size: 2.5em;
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+        
+        .story-actions {
+            margin-top: 20px;
+        }
+        
+        .story-content {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            line-height: 1.8;
+        }
+        
+        .story-content h2 {
+            color: #667eea;
+            font-size: 2em;
+            margin: 30px 0 15px 0;
+        }
+        
+        .story-content h3 {
+            color: #764ba2;
+            font-size: 1.5em;
+            margin: 25px 0 10px 0;
+        }
+        
+        .story-content p {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+        
+        .story-illustration {
+            width: 100%;
+            max-width: 600px;
+            height: 300px;
+            margin: 30px auto;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px dashed #ccc;
+            color: #666;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        /* Introduction Page */
+        .intro-section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+        
+        .intro-section h1 {
+            font-size: 2.5em;
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .intro-section h2 {
+            font-size: 2em;
+            color: #764ba2;
+            text-align: center;
+            margin: 30px 0 20px 0;
+        }
+        
+        .intro-text {
+            font-size: 1.2em;
+            color: #555;
+            line-height: 1.8;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .characters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .character-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        .character-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 10px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed #ccc;
+            color: #666;
+            font-size: 0.9em;
+            text-align: center;
+            padding: 10px;
+        }
+        
+        .character-card h3 {
+            color: #667eea;
+            font-size: 1.8em;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+        
+        .character-breed {
+            color: #764ba2;
+            font-style: italic;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+        .character-appearance {
+            color: #888;
+            text-align: center;
+            font-size: 0.95em;
+            margin-bottom: 15px;
+            padding: 8px;
+            background: white;
+            border-radius: 8px;
+        }
+        
+        .character-trait {
+            color: #555;
+            margin: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .character-trait:before {
+            content: "🐾";
+            position: absolute;
+            left: 0;
+        }
+        
+        .pack-motto {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            margin-top: 30px;
+            font-size: 1.3em;
+            font-weight: bold;
+            font-style: italic;
+        }
+        
+        /* About Page */
+        .about-content {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+        
+        .about-content h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .about-content h2 {
+            color: #764ba2;
+            font-size: 1.8em;
+            margin: 30px 0 15px 0;
+        }
+        
+        .about-content p {
+            color: #555;
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5em;
+            }
+            
+            nav {
+                justify-content: center;
+            }
+            
+            .logo {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 10px;
+            }
+            
+            .story-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav>
+            <div class="logo">🐕 The Harley Pack</div>
+            <div class="nav-links">
+                <button onclick="showPage('home')" class="active" id="nav-home">Home</button>
+                <button onclick="showPage('introduction')" id="nav-introduction">Meet the Pack</button>
+                <button onclick="showPage('library')" id="nav-library">Story Library</button>
+                <button onclick="showPage('about')" id="nav-about">About</button>
+            </div>
+        </nav>
+
+        <!-- HOME PAGE -->
+        <div id="home" class="page active">
+            <div class="hero">
+                <h1>The Harley Pack Mysteries</h1>
+                <p>Join Harley and his friends on exciting adventures as they solve mysteries in the beautiful Dorset countryside!</p>
+                <div class="hero-image">
+                    [Main illustration: All six dogs together in Lytchett Matravers]
+                </div>
+                <button class="cta-button" onclick="showPage('introduction')">Meet the Pack</button>
+                <button class="cta-button" onclick="showPage('library')">Read Stories</button>
+            </div>
+            
+            <div class="story-grid">
+                <div class="story-card" onclick="showPage('story1')">
+                    <div class="story-thumbnail">🎄</div>
+                    <span class="story-status status-available">Available Now</span>
+                    <h3>The Christmas Lights Mystery</h3>
+                    <p>Strange lights appear at Corfe Castle just before Christmas. Can the pack solve the mystery in time to save the village carol service?</p>
+                    <button class="read-button" onclick="event.stopPropagation(); showPage('story1')">Read Story</button>
+                    <button class="download-button" onclick="event.stopPropagation(); downloadPDF('christmas')">Download PDF</button>
+                </div>
+                
+                <div class="story-card">
+                    <div class="story-thumbnail">👻</div>
+                    <span class="story-status status-coming">Coming Soon</span>
+                    <h3>The Phantom of Corfe Castle</h3>
+                    <p>Mysterious howling echoes from the ancient ruins. What secrets are hidden in the castle at night?</p>
+                </div>
+                
+                <div class="story-card">
+                    <div class="story-thumbnail">🦴</div>
+                    <span class="story-status status-coming">Coming Soon</span>
+                    <h3>The Mystery of the Missing Sheep</h3>
+                    <p>Sheep are vanishing without a trace from local farms. The pack must use their speed and keen senses to crack the case!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- INTRODUCTION PAGE -->
+        <div id="introduction" class="page">
+            <div class="intro-section">
+                <h1>Meet the Pack</h1>
+                <p class="intro-text">
+                    In the quiet Dorset village of Lytchett Matravers, six extraordinary dogs solve the strangest mysteries. 
+                    With their incredible speed, keen eyesight, and loyal hearts, no puzzle is too puzzling for the Harley Pack!
+                </p>
+                
+                <h2>The Pack Members</h2>
+                
+                <div class="characters-grid">
+                    <div class="character-card">
+                        <div class="character-image">
+                            [Harley's illustration]<br>White muzzle, gold body
+                        </div>
+                        <h3>Harley</h3>
+                        <p class="character-breed">Saluki</p>
+                        <p class="character-appearance">White muzzle, golden body</p>
+                        <div class="character-trait">The clever leader of the pack</div>
+                        <div class="character-trait">Observant and quick-thinking</div>
+                        <div class="character-trait">Always trusts his instincts</div>
+                    </div>
+                    
+                    <div class="character-card">
+                        <div class="character-image">
+                            [Timm's illustration]<br>Black masked, gold coat
+                        </div>
+                        <h3>Timm</h3>
+                        <p class="character-breed">Afghan Hound</p>
+                        <p class="character-appearance">Black masked, golden coat</p>
+                        <div class="character-trait">Brave and action-oriented</div>
+                        <div class="character-trait">First to investigate anything exciting</div>
+                        <div class="character-trait">Protective of his friends</div>
+                    </div>
+                    
+                    <div class="character-card">
+                        <div class="character-image">
+                            [Oscar's illustration]<br>Shaded masked, gold coat
+                        </div>
+                        <h3>Oscar</h3>
+                        <p class="character-breed">Afghan Hound</p>
+                        <p class="character-appearance">Shaded masked, golden coat</p>
+                        <div class="character-trait">Enthusiastic and playful</div>
+                        <div class="character-trait">Sees every day as an adventure</div>
+                        <div class="character-trait">Brings joy to every mystery</div>
+                    </div>
+                    
+                    <div class="character-card">
+                        <div class="character-image">
+                            [Dillon's illustration]<br>Grizzle coat
+                        </div>
+                        <h3>Dillon</h3>
+                        <p class="character-breed">Afghan Hound</p>
+                        <p class="character-appearance">Black masked grizzle (silver with black & white flecks)</p>
+                        <div class="character-trait">Thoughtful and analytical</div>
+                        <div class="character-trait">Thinks things through carefully</div>
+                        <div class="character-trait">His sharp mind solves puzzles</div>
+                    </div>
+                    
+                    <div class="character-card">
+                        <div class="character-image">
+                            [Lewis's illustration]<br>Shaded masked, gold coat
+                        </div>
+                        <h3>Lewis</h3>
+                        <p class="character-breed">Saluki Cross</p>
+                        <p class="character-appearance">Shaded masked, golden coat</p>
+                        <div class="character-trait">Adaptable and resourceful</div>
+                        <div class="character-trait">Thinks outside the box</div>
+                        <div class="character-trait">Sees solutions others miss</div>
+                    </div>
+                    
+                    <div class="character-card">
+                        <div class="character-image">
+                            [Moss's illustration]<br>Black and white coat
+                        </div>
+                        <h3>Moss</h3>
+                        <p class="character-breed">Lurcher</p>
+                        <p class="character-appearance">Black and white coat</p>
+                        <div class="character-trait">Street-smart and practical</div>
+                        <div class="character-trait">Knows all the local shortcuts</div>
+                        <div class="character-trait">The pack's guide and navigator</div>
+                    </div>
+                </div>
+                
+                <div class="pack-motto">
+                    "Different breeds, different personalities, united in purpose - the pack sticks together!"
+                </div>
+            </div>
+        </div>
+
+        <!-- STORY LIBRARY PAGE -->
+        <div id="library" class="page">
+            <div class="intro-section">
+                <h1>Story Library</h1>
+                <p class="intro-text">
+                    Choose an adventure to read! Each mystery takes the pack to different parts of Dorset as they use their speed, intelligence, and teamwork to solve puzzling cases.
+                </p>
+            </div>
+            
+            <div class="story-grid">
+                <div class="story-card" onclick="showPage('story1')">
+                    <div class="story-thumbnail">🎄</div>
+                    <span class="story-status status-available">Available Now</span>
+                    <h3>The Christmas Lights Mystery</h3>
+                    <p>It's the week before Christmas, and strange coloured lights are appearing at Corfe Castle every night. Christmas decorations are disappearing from Lytchett Matravers, and villagers are getting worried. Can Harley and his friends solve the mystery before the traditional Christmas Eve carol service has to be cancelled?</p>
+                    <button class="read-button" onclick="event.stopPropagation(); showPage('story1')">Read Story</button>
+                    <button class="download-button" onclick="event.stopPropagation(); downloadPDF('christmas')">Download PDF</button>
+                </div>
+                
+                <div class="story-card">
+                    <div class="story-thumbnail">👻</div>
+                    <span class="story-status status-coming">Coming Soon</span>
+                    <h3>The Phantom of Corfe Castle</h3>
+                    <p>Strange howling echoes from the ruined castle at night, and tourists report seeing a ghostly figure. The dogs investigate and discover something unexpected...</p>
+                </div>
+                
+                <div class="story-card">
+                    <div class="story-thumbnail">🐑</div>
+                    <span class="story-status status-coming">Coming Soon</span>
+                    <h3>The Mystery of the Missing Sheep</h3>
+                    <p>Sheep keep vanishing from local farms without a trace—no broken fences, no tracks. The hounds use their incredible speed and sight to solve the puzzle.</p>
+                </div>
+                
+                <div class="story-card">
+                    <div class="story-thumbnail">🦴</div>
+                    <span class="story-status status-coming">Coming Soon</span>
+                    <h3>The Jurassic Coast Fossils</h3>
+                    <p>Valuable fossils keep disappearing from the beach before palaeontologists can document them. Can the pack catch the thieves?</p>
+                </div>
+                
+                <div class="story-card">
+                    <div class="story-thumbnail">⚔️</div>
+                    <span class="story-status status-coming">Coming Soon</span>
+                    <h3>The Secret of Badbury Rings</h3>
+                    <p>The ancient hill fort becomes the centre of strange lights and mysterious digging. What are the treasure hunters searching for?</p>
+                </div>
+                
+                <div class="story-card">
+                    <div class="story-thumbnail">🌾</div>
+                    <span class="story-status status-coming">Coming Soon</span>
+                    <h3>The Haunted Windmill</h3>
+                    <p>The old windmill starts turning on windless nights, frightening villagers. What secret is hidden inside?</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- STORY 1 PAGE -->
+        <div id="story1" class="page">
+            <div class="story-header">
+                <h1>The Mystery of the Christmas Lights at Corfe Castle</h1>
+                <p style="font-size: 1.2em; color: #764ba2; margin: 10px 0;">A Harley Pack Adventure</p>
+                <div class="story-actions">
+                    <button class="cta-button" onclick="window.print()">Print Story</button>
+                    <button class="cta-button" onclick="downloadPDF('christmas')">Download PDF</button>
+                </div>
+            </div>
+            
+            <div class="story-content">
+                <div class="story-illustration">
+                    [Illustration: The pack looking out the window at the village green with snow falling]
+                </div>
+                
+                <h2>Chapter One: Something Strange in the Village</h2>
+                
+                <p>Snow dusted the thatched roofs of Lytchett Matravers like icing sugar on Christmas cakes. Harley pressed his elegant nose against the cold window pane, his amber eyes fixed on the village green where a small crowd had gathered. Something was wrong. He could tell by the way Mrs. Pemberton from the Post Office was waving her arms about, and how old Mr. Jenkins kept shaking his head.</p>
+
+                <p>"What's all the fuss about?" asked Timm, stretching his long Afghan Hound legs as he padded over. His silky coat, the colour of warm honey, rippled as he moved. Timm was always first to investigate anything exciting.</p>
+
+                <p>"Not sure yet," Harley replied, his Saluki instincts already alert. As the unofficial leader of their little pack, he'd learned to trust his gut feelings. "But I think we should find out."</p>
+
+                <p>Oscar bounded over, his cream-coloured Afghan coat bouncing with each step. "Are we having an adventure? Please say we're having an adventure!" Unlike his more serious brother Timm, Oscar saw every day as a potential game.</p>
+
+                <p>"Everything's an adventure to you," muttered Dillon, the third Afghan Hound, who was lying by the fireplace. His darker, more distinguished coat was perfectly groomed as always. Dillon preferred to think things through before rushing in, but once he committed to a mystery, his sharp mind was invaluable.</p>
+
+                <p>Lewis, the Saluki cross with his distinctive mismatched markings, was already at the door. "Come on then, if we're going. Whatever it is, the whole village is talking about it." His mixed heritage made him adaptable and quick-thinking—often seeing solutions the purebreds missed.</p>
+
+                <p>Last to join them was Moss, the Lurcher whose rough coat and street-smart attitude set her apart from her more aristocratic friends. "I heard Mrs. Pemberton telling the postman this morning. Something about lights at the castle and missing decorations. Been happening all week."</p>
+
+                <p>The six dogs exchanged glances. This was exactly the sort of mystery they loved.</p>
+
+                <div class="story-illustration">
+                    [Illustration: The pack trotting together down the snowy lane toward the village green]
+                </div>
+
+                <h2>Chapter Two: The Village Meeting</h2>
+
+                <p>The pack trotted down the lane toward the village green, their breath forming little clouds in the crisp December air. Christmas was only four days away, and normally Lytchett Matravers would be aglow with festive cheer. But today, worried faces gathered around the village notice board.</p>
+
+                <p>"It's the third night in a row!" Mrs. Pemberton was saying. "Strange coloured lights dancing around Corfe Castle ruins. My cousin in Corfe village says half the town's seen them."</p>
+
+                <p>"And my Christmas wreath vanished right off my front door," added Mr. Jenkins. "Along with the string of lights I'd put up along my fence."</p>
+
+                <p>"My inflatable snowman!" called someone else. "Gone without a trace!"</p>
+
+                <p>Harley's ears pricked forward. He nudged Lewis. "Missing decorations and mysterious lights. What do you make of it?"</p>
+
+                <p>Lewis sat back on his haunches, considering. "Could be connected. Someone taking decorations and using them at the castle, maybe?"</p>
+
+                <p>"But why?" Timm asked, always ready to leap into action but less patient with the thinking part. "Who steals Christmas decorations just to put them somewhere else?"</p>
+
+                <p>"That's what we need to find out," Harley decided. "We'll go to Corfe Castle tonight."</p>
+
+                <p>Moss, who'd been listening to more of the villagers' conversation, trotted back with news. "They're talking about cancelling the Christmas Eve carol service at the castle. Too many people are spooked."</p>
+
+                <p>"We can't let that happen," Dillon said firmly, his thoughtful nature stirred into action. "That carol service has been a tradition for over fifty years."</p>
+
+                <p>Oscar's tail wagged. "So we're definitely having an adventure then?"</p>
+
+                <p>Harley looked at his five friends—different breeds, different personalities, but united in purpose. "We're going to solve this mystery and save Christmas Eve. The pack sticks together."</p>
+
+                <div class="story-illustration">
+                    [Illustration: The six dogs crossing the heathland at twilight with Corfe Castle in the distance]
+                </div>
+
+                <h2>Chapter Three: Journey to Corfe Castle</h2>
+
+                <p>That evening, as the winter sun set early over Dorset, the six dogs set out on their mission. They followed the old paths across the heathland, their sighthound vision perfect for navigating the twilight. The gorse bushes were dark shapes against the dimming sky, and in the distance, Poole Harbour gleamed like pewter.</p>
+
+                <p>"There it is," whispered Lewis as they crested a hill.</p>
+
+                <p>Corfe Castle rose before them, its ruined towers stark against the purple sky. Built nearly a thousand years ago, the castle had witnessed centuries of history—and now, apparently, something mysterious.</p>
+
+                <p>"I don't see any lights yet," Oscar said, his earlier enthusiasm tempered by the imposing sight of the ruins.</p>
+
+                <p>"We need to get closer," Harley decided. "And stay hidden. If someone's up to something, we don't want to scare them off before we know what's going on."</p>
+
+                <p>Moss took the lead—her Lurcher instincts and knowledge of back ways proved invaluable. She guided them along a sheep track that wound down into the village of Corfe itself, then around to the back of the castle grounds where old stone walls provided cover.</p>
+
+                <p>They settled into position behind a fallen section of wall, where they could see most of the castle ruins without being spotted. The temperature was dropping, and their breath came in frosty puffs.</p>
+
+                <p>"Now we wait," Dillon said quietly.</p>
+
+                <p>And wait they did. The village below began to twinkle with house lights. A church clock chimed eight o'clock. Then nine.</p>
+
+                <p>"Maybe nothing's going to happen tonight," Oscar whispered, shivering slightly despite his thick coat.</p>
+
+                <p>But Timm's head suddenly lifted. "Look! There!"</p>
+
+                <p>A light flickered near the base of one of the towers. Then another. Then suddenly, a cascade of coloured lights began to glow—red, green, gold, and blue—climbing up the ancient stones like magical ivy.</p>
+
+                <p>"It's beautiful," breathed Lewis.</p>
+
+                <p>It was. The lights seemed to dance and twinkle, transforming the medieval ruins into something from a fairy tale. Stars and snowflakes made of lights appeared to float in the air. Somewhere, bells jingled softly.</p>
+
+                <p>"But who's doing it?" Harley wondered. "And why?"</p>
+
+                <p>"There!" Moss hissed. "Movement by that doorway!"</p>
+
+                <p>They all strained to see. A figure was moving in the shadows near the old gatehouse—someone small and elderly, moving slowly but purposefully.</p>
+
+                <p>"We need to get closer," Harley decided. "But carefully. Remember, we're here to solve the mystery, not scare anyone."</p>
+
+                <div class="story-illustration">
+                    [Illustration: The castle lit up with beautiful Christmas lights, the pack watching from behind the wall]
+                </div>
+
+                <h2>Chapter Four: The Truth Revealed</h2>
+
+                <p>The pack split up, using their natural speed and stealth to approach from different angles. Harley and Dillon circled left, Lewis and Moss went right, while Timm and Oscar crept straight down the middle path, using rubble for cover.</p>
+
+                <p>As they drew closer, they could see the figure more clearly: an elderly man in a thick coat and cap, carefully adjusting a strand of lights. Around him were boxes and bags—full of the missing village decorations.</p>
+
+                <p>"That's old Tom Weatherby," Moss whispered to Lewis. "Used to be the groundskeeper here, years ago. Lives in that cottage by the church."</p>
+
+                <p>The dogs regrouped behind a low wall, watching Tom work. He moved with such care, such love, positioning each light just so. His weathered hands trembled slightly, but his face held a smile of pure joy as he stepped back to admire his creation.</p>
+
+                <p>"He doesn't look like a villain," Oscar observed.</p>
+
+                <p>"Because he isn't one," Dillon said thoughtfully. "Look at him. He's not stealing—he's creating something."</p>
+
+                <p>As they watched, Tom pulled something from his pocket—an old photograph, creased and faded. He held it up, comparing it to the lights display before him, making small adjustments.</p>
+
+                <p>Harley made a decision. "I'm going to approach him. Alone first. Follow my lead."</p>
+
+                <p>"Be careful," Timm urged.</p>
+
+                <p>Harley stepped out from behind the wall and walked slowly toward Tom, making soft friendly sounds. Tom turned, startled, then his face softened.</p>
+
+                <p>"Well, hello there, young fellow," Tom said quietly, extending a gnarled hand. "You're a beautiful Saluki, aren't you? Haven't seen one of your kind up here in years."</p>
+
+                <p>Encouraged, the other dogs emerged one by one. Tom's eyes widened. "My word. A whole pack of you. Afghan Hounds too, and a Lurcher. Like a picture from an old book."</p>
+
+                <p>The dogs sat in a semicircle, looking at Tom with their intelligent eyes. There was something about him—a sadness beneath the joy—that touched them all.</p>
+
+                <p>Tom sat down heavily on a block of stone, the photograph still in his hand. Perhaps it was the kindness in their eyes, or simply the need to tell someone, but he began to speak.</p>
+
+                <p>"Sixty years ago, when I was just a lad, my father was groundskeeper here. Every Christmas, he'd string up lights all over the castle—not many, mind you, just what we could afford. But he'd arrange them so cleverly, so beautifully. People would come from miles around to see it. He'd say, 'Tom, we're keeping the old castle's heart beating. She was built to bring people together, to be the heart of the community. That's what she still should be.'"</p>
+
+                <p>Tom wiped his eyes. "This is my last Christmas in Corfe. I'm moving to a care home after New Year. The cottage is too much for me now. I just wanted... one more time... to see the castle lit up the way my father used to do it. To remember when things were magical."</p>
+
+                <p>He looked at the photograph—a faded image of the castle ablaze with lights, a young boy and his father standing proudly in front.</p>
+
+                <p>"I know I shouldn't have taken the decorations without asking. I'll give them all back, I promise. I just wanted one more Christmas."</p>
+
+                <p>Harley moved closer and rested his elegant head against Tom's knee. The old man's hand came down to stroke the soft fur, and tears rolled down his weathered cheeks.</p>
+
+                <div class="story-illustration">
+                    [Illustration: Tom sitting with the dogs around him, the castle lights glowing behind them]
+                </div>
+
+                <h2>Chapter Five: A Pack's Solution</h2>
+
+                <p>The dogs left Tom at the castle and raced back to Lytchett Matravers faster than they'd ever run. They arrived at their home and began to bark—not their usual barks, but urgent, insistent sounds that brought their family running.</p>
+
+                <p>Through a series of actions that would have seemed remarkable to anyone who didn't know these dogs, they managed to communicate something important. They tugged at coats, pulled at scarves, and ran to the door and back, over and over, until finally their family understood: follow us.</p>
+
+                <p>The pack led them to the Pemberton house, then to Mr. Jenkins, and then to others. Word spread quickly through the small village. Something was happening at Corfe Castle, and the dogs wanted everyone to see it.</p>
+
+                <p>Within an hour, a procession of villagers made their way across the heathland, following the six sighthounds through the darkness. When they crested the final hill and saw the castle illuminated with their own decorations, transforming the ancient ruins into a vision of Christmas magic, they stopped in wonder.</p>
+
+                <p>Tom stood by the gatehouse, looking panicked as the crowd approached. But Mrs. Pemberton stepped forward first.</p>
+
+                <p>"Tom Weatherby, is that my wreath I see up there?"</p>
+
+                <p>Tom hung his head. "Yes, Mrs. Pemberton. I'm so sorry. I'll take everything down right now. I shouldn't have—"</p>
+
+                <p>"It looks better there than it ever did on my door," she interrupted, her stern face breaking into a smile. "And those are your lights, aren't they, Mr. Jenkins?"</p>
+
+                <p>The old farmer stepped forward, studying the display. "That they are. I remember your father doing this, Tom. I was just a boy. Haven't seen the castle lit up like this in... must be near sixty years."</p>
+
+                <p>"I remember too," said another villager. "My grandmother used to bring me to see it."</p>
+
+                <p>Tom looked around at the gathering crowd, confused. "You're... not angry?"</p>
+
+                <p>"Angry?" Mrs. Pemberton laughed. "Tom Weatherby, you've reminded us what Christmas is really about. Bringing beauty back to our old castle, bringing the community together. Your father would be proud."</p>
+
+                <p>"But the carol service..." Tom began.</p>
+
+                <p>"Will be even more special this year," Mr. Jenkins declared. "With your lights display as the backdrop. That is, if you'll do us the honour?"</p>
+
+                <p>Tom couldn't speak. He simply nodded, tears streaming down his face once more, but these were tears of joy.</p>
+
+                <p>The villagers stayed for hours that night, helping Tom adjust the lights, adding more decorations, telling stories of Christmases past. Someone brought hot chocolate. Someone else brought mince pies. Children played among the ruins while their parents worked, and slowly, the castle became not just beautifully lit, but loved again.</p>
+
+                <p>Harley and his pack watched from their favourite spot on the hill.</p>
+
+                <p>"We did it," Oscar said happily. "We solved the mystery!"</p>
+
+                <p>"We did better than that," Dillon observed. "We helped bring the village together."</p>
+
+                <p>"And saved Christmas Eve," Timm added.</p>
+
+                <p>"Tom gets to have his magical Christmas," Lewis said with satisfaction.</p>
+
+                <p>Moss simply wagged her tail, content.</p>
+
+                <p>Harley looked at his friends—his pack—and felt a warm glow that had nothing to do with the distant lights. "I think this is what we're meant to do. Not just solve mysteries, but help people. What do you say? Are we in this together?"</p>
+
+                <p>Five tails wagged in unison.</p>
+
+                <div class="story-illustration">
+                    [Illustration: The pack sitting together on the hill, overlooking the lit castle and happy villagers]
+                </div>
+
+                <h2>Epilogue: Christmas Eve</h2>
+
+                <p>The carol service at Corfe Castle on Christmas Eve was the most beautiful anyone could remember. Tom's lights blazed against the starry sky, the ancient stones seemed to glow with warmth, and voices rose in songs that had been sung for centuries.</p>
+
+                <p>Tom Weatherby stood at the front, a place of honour, his photograph of his father carefully tucked in his pocket. The village had given him a gift: a book filled with photographs of this year's display, and a promise that every Christmas, they would light up the castle in his father's memory—and his.</p>
+
+                <p>Harley, Timm, Oscar, Dillon, Lewis, and Moss sat together on the hill above, watching the flickering candles and listening to the music drift up on the cold, clear air.</p>
+
+                <p>"You know what the best part is?" Oscar asked.</p>
+
+                <p>"What?" the others replied.</p>
+
+                <p>"This is just our first adventure. Think of all the mysteries still waiting for us!"</p>
+
+                <p>Harley smiled—if dogs can smile—and looked out over the beautiful scene below. The pack was together, the village was happy, and somewhere in the Dorset countryside, another mystery was surely waiting.</p>
+
+                <p>But tonight was for celebration, for community, for the magic of Christmas.</p>
+
+                <p>And for six dogs who had proven that sometimes the best way to solve a mystery is with kindness, understanding, and a pack that sticks together.</p>
+
+                <div style="text-align: center; margin: 40px 0; font-size: 1.5em; color: #667eea;">
+                    <strong>The End</strong>
+                </div>
+
+                <div style="text-align: center; font-style: italic; color: #764ba2; margin: 20px 0;">
+                    But the adventures of Harley and his friends are just beginning...
+                </div>
+            </div>
+        </div>
+
+        <!-- ABOUT PAGE -->
+        <div id="about" class="page">
+            <div class="about-content">
+                <h1>About The Harley Pack</h1>
+                
+                <h2>The Stories</h2>
+                <p>The Harley Pack Mysteries follow six sighthound friends as they solve mysteries in the beautiful Dorset countryside. Inspired by classics like Scooby Doo and Enid Blyton's Famous Five, these stories combine adventure, friendship, and heart.</p>
+                
+                <p>Each mystery is set in real Dorset locations—from the historic ruins of Corfe Castle to the heathlands around Lytchett Matravers—bringing the beauty of this region to life for young readers.</p>
+                
+                <h2>The Real Dogs</h2>
+                <p>The characters in these stories are based on real dogs—past and present companions who have filled our lives with joy, loyalty, and yes, plenty of adventures! Each character's personality reflects the unique spirit of the dog who inspired them.</p>
+                
+                <h2>Coming Soon</h2>
+                <p>New mysteries are being written! Check back regularly to see what puzzles the Harley Pack will solve next. From phantom sightings to missing sheep, from ancient hill forts to mysterious windmills—there's no shortage of adventures waiting in Dorset.</p>
+                
+                <h2>Connect With Us</h2>
+                <p>We'd love to hear from young readers and their families! If you enjoy the stories, please share them with friends who might like mystery-solving dogs too.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            
+            // Remove active class from all nav buttons
+            const navButtons = document.querySelectorAll('.nav-links button');
+            navButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Update nav button
+            const navId = 'nav-' + pageId.replace('story1', 'library');
+            const activeNav = document.getElementById(navId);
+            if (activeNav) {
+                activeNav.classList.add('active');
+            }
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+        
+        function downloadPDF(storyName) {
+            alert('PDF download functionality would be implemented here.\n\nIn a live website, this would generate or download a PDF version of "' + storyName + '" story.');
+            // In a real implementation, this would trigger a PDF download
+            // For now, it just shows what would happen
+        }
+    </script>
+</body>
+</html>
