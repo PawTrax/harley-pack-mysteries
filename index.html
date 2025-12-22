@@ -914,27 +914,9 @@
         }
         
         function downloadPDF(storyName) {
-    const pdfFiles = {
-        'christmas': 'downloads/christmas-lights-mystery.pdf',
-        // Add more stories as you create them:
-        // 'phantom': 'downloads/phantom-of-corfe-castle.pdf',
-        // 'sheep': 'downloads/missing-sheep-mystery.pdf',
-    };
-    
-    const pdfPath = pdfFiles[storyName];
-    
-    if (pdfPath) {
-        // Create a temporary link and trigger download
-        const link = document.createElement('a');
-        link.href = pdfPath;
-        link.download = pdfPath.split('/').pop(); // Gets filename
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    } else {
-        alert('PDF not yet available for this story. Check back soon!');
-    }
-}
+            alert('PDF download functionality would be implemented here.\n\nIn a live website, this would generate or download a PDF version of "' + storyName + '" story.');
+            // In a real implementation, this would trigger a PDF download
+            // For now, it just shows what would happen
         }
     </script>
 </body>
