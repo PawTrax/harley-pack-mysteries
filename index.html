@@ -487,11 +487,14 @@
                     <button class="download-button" onclick="event.stopPropagation(); downloadPDF('christmas')">Download PDF</button>
                 </div>
                 
-                <div class="story-card">
+               <div class="story-card" onclick="showPage('story2')">
                     <div class="story-thumbnail">👻</div>
-                    <span class="story-status status-coming">Coming Soon</span>
+                    <span class="story-status status-available">Available Now</span>
                     <h3>The Phantom of Corfe Castle</h3>
-                    <p>Mysterious howling echoes from the ancient ruins. What secrets are hidden in the castle at night?</p>
+                    <p>Strange howling echoes from the ruined castle at night, and tourists report seeing a ghostly figure. The pack investigates and discovers something unexpected... Meanwhile, a shy lurcher named Billy finds the courage to help, revealing that sometimes the quietest voices have the most important things to say.</p>
+                    <button class="read-button" onclick="event.stopPropagation(); showPage('story2')">Read Story</button>
+                    <button class="download-button" onclick="event.stopPropagation(); downloadPDF('phantom')">Download PDF</button>
+                </div>
                 </div>
                 
                 <div class="story-card">
@@ -587,7 +590,22 @@
                         <div class="character-trait">The pack's guide and navigator</div>
                     </div>
                 </div>
+                <h2 style="margin-top: 50px;">Special Consultant</h2>
                 
+                <div class="characters-grid" style="max-width: 400px; margin: 30px auto;">
+                    <div class="character-card">
+                        <div class="character-image">
+                            <img src="images/billy.png" alt="Billy - Small black and white rescued Lurcher" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                        </div>
+                        <h3>Billy</h3>
+                        <p class="character-breed">Rescued Lurcher</p>
+                        <p class="character-appearance">Black and white, smaller build</p>
+                        <div class="character-trait">Patient observer and watcher</div>
+                        <div class="character-trait">Shy but brave when needed</div>
+                        <div class="character-trait">Expert at noticing small details</div>
+                        <div class="character-trait">Called upon for special missions</div>
+                    </div>
+                </div>
                 <div class="pack-motto">
                     "Different breeds, different personalities, united in purpose - the pack sticks together!"
                 </div>
@@ -613,13 +631,14 @@
                     <button class="download-button" onclick="event.stopPropagation(); downloadPDF('christmas')">Download PDF</button>
                 </div>
                 
-                <div class="story-card">
+                  <div class="story-card" onclick="showPage('story2')">
                     <div class="story-thumbnail">👻</div>
-                    <span class="story-status status-coming">Coming Soon</span>
+                    <span class="story-status status-available">Available Now</span>
                     <h3>The Phantom of Corfe Castle</h3>
-                    <p>Strange howling echoes from the ruined castle at night, and tourists report seeing a ghostly figure. The dogs investigate and discover something unexpected...</p>
-                </div>
-                
+                    <p>Mysterious howling echoes from the ancient ruins. What secrets are hidden in the castle at night?</p>
+                    <button class="read-button" onclick="event.stopPropagation(); showPage('story2')">Read Story</button>
+                    <button class="download-button" onclick="event.stopPropagation(); downloadPDF('phantom')">Download PDF</button>
+                </div>              
                 <div class="story-card">
                     <div class="story-thumbnail">🐑</div>
                     <span class="story-status status-coming">Coming Soon</span>
@@ -863,7 +882,219 @@
                 </div>
             </div>
         </div>
+<!-- STORY 2 PAGE -->
+        <div id="story2" class="page">
+            <div class="story-header">
+                <h1>The Phantom of Corfe Castle</h1>
+                <p style="font-size: 1.2em; color: #764ba2; margin: 10px 0;">A Harley Pack Adventure</p>
+                <div class="story-actions">
+                    <button class="cta-button" onclick="window.print()">Print Story</button>
+                    <button class="cta-button" onclick="downloadPDF('phantom')">Download PDF</button>
+                </div>
+            </div>
+            
+            <div class="story-content">
+                <h2>Chapter One: Strange Reports</h2>
+                
+                <p>The January morning was crisp and clear as Harley stretched in the weak winter sunlight streaming through the window. Christmas seemed like a distant memory now, though the pack's adventure with Tom and the lights still brought smiles to the villagers' faces whenever they passed.</p>
 
+                <p>"Have you heard?" Oscar burst through the door, his gold coat still damp from the morning dew. "There's something strange happening at the castle again!"</p>
+
+                <p>Timm looked up from his breakfast bowl. "What kind of strange?"</p>
+
+                <p>"Howling," Oscar said dramatically. "Mournful howling in the dead of night. And people are seeing things—a ghostly figure walking the battlements!"</p>
+
+                <p>Dillon, ever the analytical one, tilted his grizzled head thoughtfully. "Tourists love a good ghost story. Could be someone's imagination running wild."</p>
+
+                <p>"Except it's not just tourists," Moss interjected, trotting in from the garden. "I was talking to the postman this morning. Well, listening, really. He says the locals are spooked. Three separate people have reported seeing the same thing—a tall, dark figure, moving along the castle walls at night. And the howling... he says it's not like any dog or fox he's ever heard."</p>
+
+                <p>Lewis's ears pricked forward. "This sounds like a proper mystery."</p>
+
+                <p>Harley rose to his feet, his leadership instincts already engaged. "We should investigate. But carefully. If there really is something—or someone—up there, we need to observe first. Rushing in didn't help us last time until we understood what was really happening."</p>
+
+                <p>"When do we go?" Timm asked, always ready for action.</p>
+
+                <p>"Tonight," Harley decided. "We'll watch and wait. See what we can discover."</p>
+
+                <p>What none of them noticed was the small black and white shape that had been sitting beneath the window outside, listening to every word. Billy, the shy rescued lurcher, had been watching the pack for months now, admiring their adventures from a distance. His heart raced with a mixture of excitement and fear. The castle. The phantom. Perhaps... perhaps this was something he could help with. If only he had the courage to approach them.</p>
+
+                <h2>Chapter Two: The Watchers in the Dark</h2>
+
+                <p>That night, the pack made their way across the familiar heathland path to Corfe Castle. The moon was nearly full, casting silver light across the ancient stones. It was beautiful, but also eerie—shadows seemed deeper, sounds sharper.</p>
+
+                <p>"There," whispered Lewis, pointing with his nose toward the western wall. "Did you see that?"</p>
+
+                <p>They all looked. For a moment, there was nothing. Then—movement. A dark shape, taller than a person, seemed to glide along the top of the ruined wall. It paused, and from somewhere in the castle came a sound that made even brave Timm's fur stand on end: a long, mournful howl that echoed off the stone.</p>
+
+                <p>"That's not a dog," Moss said quietly. "And it's not a fox either."</p>
+
+                <p>"It's not a person, surely?" Oscar said, his usual enthusiasm dampened by the genuinely unsettling sight.</p>
+
+                <p>Dillon was watching intently. "Look at how it moves. It's too smooth. Too... flowing. There's something not right about it."</p>
+
+                <p>Harley made a decision. "We need to get closer. But we split up. Dillon and I will circle left, Timm and Oscar right. Lewis and Moss, you approach from the back near where we watched Tom. We'll surround it, whatever it is, and observe from different angles."</p>
+
+                <p>What they didn't know was that Billy had followed them. The small lurcher had kept a careful distance, using every bit of his street-smart stealth. While the larger sighthounds were beautiful and fast, Billy's smaller size and nervous nature had taught him how to move without being seen. Now, as the pack split up, Billy made his own decision. There was something else—something the pack hadn't noticed yet. From his position further up the hill, where he'd been sitting quietly (as he so often did), Billy had seen a second figure. Not the phantom on the wall, but someone moving in the shadows near the base of the castle. Someone very much alive and human.</p>
+
+                <p>Billy's heart hammered in his chest. He should tell them. He should run down there right now and bark, alert the pack. But the thought of approaching them—of six pairs of eyes turning to look at him—made his legs feel weak. What if they didn't want his help? What if they chased him away?</p>
+
+                <p>So instead, Billy did what he did best. He watched. And he waited.</p>
+
+                <h2>Chapter Three: Multiple Mysteries</h2>
+
+                <p>The pack regrouped near the old gatehouse, confused and a little unnerved.</p>
+
+                <p>"It vanished," Timm reported. "One moment it was there on the wall, the next—nothing. We saw where it was standing. There's no way down from that section. It's a sheer drop."</p>
+
+                <p>"We saw the same," Harley confirmed. "It was there, and then it wasn't. Almost like it melted into the stone."</p>
+
+                <p>"And the howling stopped the moment it disappeared," Lewis added.</p>
+
+                <p>Dillon was quiet, his sharp mind working. "I don't believe in ghosts. There has to be a logical explanation. Shadows playing tricks, perhaps? Or—"</p>
+
+                <p>A sound interrupted him. Not the howling this time, but something else. A soft shuffling, and then... crying? Someone was crying, very quietly, somewhere in the ruins.</p>
+
+                <p>"There," Moss whispered, her street-smart instincts pinpointing the location. "Near the old chapel entrance."</p>
+
+                <p>They crept forward carefully. Huddled in a sheltered corner was a young woman, maybe twenty years old, with a rucksack beside her. She was crying softly, holding what looked like a camera with a broken lens.</p>
+
+                <p>She looked up as the dogs approached, and instead of being frightened, her face lit up with relief. "Oh, thank goodness! You're the dogs, aren't you? The ones who helped Tom at Christmas? Everyone in the village talks about you."</p>
+
+                <p>Harley sat down in his most non-threatening pose, and the others followed suit. The woman wiped her eyes.</p>
+
+                <p>"I'm Lucy. I'm a photography student. I came here to photograph the castle at night—for my university project. But then I saw... it. That thing on the wall. It scared me so badly I dropped my camera and ran. But I dropped something else too." She pulled out her phone, showing them a photo she'd managed to snap. "I got one shot before I dropped the camera. Look."</p>
+
+                <p>The dogs gathered around. In the photo, caught in the moonlight, was the dark figure. But there was something odd about it. It was blurry in a strange way, and seemed almost translucent in places.</p>
+
+                <p>"I need to get my camera back," Lucy said. "It's got my entire project on it. But I'm too scared to go back there alone."</p>
+
+                <p>From his hiding place behind a fallen wall, Billy had been watching all of this. He'd also seen something the pack hadn't—where Lucy's camera had fallen. It had rolled down into a crevice near the base of the wall, in a spot too small for the larger dogs to reach. A spot that would be perfect for a small lurcher.</p>
+
+                <p>He took a deep breath. This was his chance. He could help. He could be useful. But the thought of walking up to all those dogs...</p>
+
+                <p>Then he remembered his owner's kind face. Remembered how she'd never pushed him, but had always gently encouraged him. "It's okay to be scared, Billy," she'd say. "But sometimes the bravest thing is trying anyway."</p>
+
+                <p>Billy stood up on shaky legs and slowly, carefully, made his way toward the group.</p>
+
+                <h2>Chapter Four: The Courage of the Small</h2>
+
+                <p>Harley's head turned first, his keen Saluki senses detecting movement. The pack turned as one to see a small black and white lurcher approaching hesitantly, his body language saying clearly: I mean no harm, I'm nervous, please don't chase me away.</p>
+
+                <p>"Hello," Harley said gently, recognizing the fear in the smaller dog's eyes. "Who are you?"</p>
+
+                <p>Billy's voice came out as barely a whisper. "I'm... I'm Billy. I'm sorry for following you. I just... I've watched you all for so long. You're so brave and clever, and I wanted to help, but I didn't know how to ask, and—"</p>
+
+                <p>"You've been watching us?" Oscar asked, but his tone was curious rather than accusatory.</p>
+
+                <p>"From a distance," Billy admitted. "I live in Lytchett Matravers too. I've seen your adventures. I'm not brave like you. I'm actually quite scared most of the time. But I saw something you didn't see. There's someone else here. A man with equipment, hiding on the eastern side. And..." he swallowed nervously, "I know where the camera fell. I can get it. I'm small enough."</p>
+
+                <p>Lucy gasped. "You can? Oh, that would be amazing!"</p>
+
+                <p>Harley looked at the small lurcher with new respect. "Show us."</p>
+
+                <p>With Billy leading the way, they moved to where Lucy had been standing. Sure enough, there was her camera, wedged in a narrow crevice between two fallen stones. The larger dogs tried to reach it, but their heads and paws were too big.</p>
+
+                <p>"I'll try," Billy said quietly. He squeezed into the space, his smaller frame and rescued-dog instincts for finding tight spots serving him well. A moment later, he emerged with the camera carefully held in his mouth, not a tooth mark on it.</p>
+
+                <p>"You're brilliant!" Lucy exclaimed, taking the camera and immediately checking it. "The lens is cracked, but the memory card is fine. My project is saved!"</p>
+
+                <p>Dillon was looking at Billy with his analytical mind clearly impressed. "You said you saw someone with equipment? Can you show us?"</p>
+
+                <p>Billy hesitated, then nodded. "I can. I've been practicing being quiet and invisible for so long. I can get close to things without anyone noticing."</p>
+
+                <p>"That," said Moss with approval, "is a very useful skill."</p>
+
+                <h2>Chapter Five: The Phantom Revealed</h2>
+
+                <p>Billy led them on a winding route through the ruins, moving so quietly that even the pack was impressed. Sure enough, they found him: a man in his forties, with what looked like a projector, speakers, and various bits of technical equipment, all carefully camouflaged.</p>
+
+                <p>They watched from hiding as he checked his watch, then started setting things up again. Within minutes, the "phantom" appeared on the castle wall—a projected image, incredibly realistic in the darkness. The howling started again from hidden speakers.</p>
+
+                <p>"It's a projection," Dillon said quietly. "Very clever. From down here, in the dark, it would look completely real."</p>
+
+                <p>"But why?" Timm asked.</p>
+
+                <p>"Let's find out," Harley decided. "Moss, you and Billy circle around to block his exit. The rest of us will show ourselves. Let's see what he does."</p>
+
+                <p>They moved into position. Then, as one, the pack emerged from the shadows, surrounding the man. He jumped, startled, then saw the six dogs watching him intently. Well, five watching intently. Billy was sitting at the edge, looking nervous but determined.</p>
+
+                <p>"Okay, okay!" the man said, hands up in surrender. "I'm not doing anything dangerous, I swear! Look, I'm just trying to drum up business for my ghost tour company. Winter's slow for tourism, see? I thought if word got around about a phantom at Corfe Castle, more people would want to come. Then I'd reveal it was all a clever illusion and offer tours showing how I did it. It's marketing!"</p>
+
+                <p>Lucy stepped out from where she'd been hiding. "You scared me half to death! And you could have damaged the castle's reputation!"</p>
+
+                <p>The man looked genuinely ashamed. "I didn't think of it that way. I just... business has been really bad. I'm sorry."</p>
+
+                <h2>Chapter Six: A Pack Grows Larger</h2>
+
+                <p>An hour later, after Lucy had called the castle authorities and the man had been thoroughly told off (though not arrested—he really hadn't meant any harm), the pack made their way back toward Lytchett Matravers. Billy walked with them, though still slightly behind, not quite confident enough to be in the middle of the group.</p>
+
+                <p>Harley dropped back to walk beside him. "You were very brave tonight, Billy."</p>
+
+                <p>"I was terrified the whole time," Billy admitted.</p>
+
+                <p>"Bravery isn't not being scared," Harley said wisely. "It's being scared and doing it anyway. You saw things we missed. You retrieved the camera. You showed us where the man was hiding. We wouldn't have solved this without you."</p>
+
+                <p>"Really?" Billy's tail gave a small wag.</p>
+
+                <p>Oscar bounded over. "You were amazing! That squeeze into the crevice? None of us could do that!"</p>
+
+                <p>"And your observation skills," Dillon added, joining them. "You saw the second person while we were all focused on the phantom. That's excellent detective work."</p>
+
+                <p>Billy looked around at the pack, hardly daring to hope. "Do you think... I mean, I know I'm not fast like you, or brave like you, or as clever, but—"</p>
+
+                <p>"Billy," Harley interrupted gently. "Would you like to be part of the pack?"</p>
+
+                <p>"But I'm not like you," Billy said. "I'm small and scared and I spend half my time sitting under trees watching squirrels."</p>
+
+                <p>"That's exactly why we need you," Moss said, coming to walk on his other side. "You notice things. You're patient. You can get into places we can't. And being scared doesn't make you less valuable—it makes you careful, which is smart."</p>
+
+                <p>Lewis nodded. "Every pack needs different skills. We've got speed and bravery covered. We could really use someone who can watch and wait."</p>
+
+                <p>"So?" Harley asked. "What do you say? You don't have to be on every adventure. We understand you like your quiet time. But when we need someone with your particular talents—someone who can observe without being seen, someone who's patient enough to watch and wait, someone small enough to get into tight spots—we'd call on you. Would that work?"</p>
+
+                <p>Billy's tail wagged properly for the first time that night. "I'd like that. I'd really, really like that."</p>
+
+                <p>"Then it's settled," Harley declared. "Billy, you're officially a member of the Harley Pack. Special consultant in observation and patience."</p>
+
+                <p>"And squirrel-watching," Oscar added with a grin.</p>
+
+                <p>"That's a legitimate skill!" Billy protested, then realized he was joking. He gave a small laugh, something he hadn't done in a long time.</p>
+
+                <p>As they walked back to the village together—seven dogs now, instead of six—Billy felt something warm bloom in his chest. He was still scared of most things. He still preferred watching to participating. He'd still spend hours sitting at the base of his favourite tree.</p>
+
+                <p>But now he belonged. Now he had friends who valued him for exactly who he was.</p>
+
+                <p>And in the Dorset countryside, another mystery had been solved—not just the phantom at the castle, but the mystery of where Billy fit in the world.</p>
+
+                <h2>Epilogue: The Pack's New Member</h2>
+
+                <p>A week later, Lucy's photography professor gave her project top marks. The photos of Corfe Castle were beautiful, and the story of how she'd discovered the "phantom" (with help from some very clever dogs) made national news. The ghost tour man ended up doing very well for himself after all—he started offering "How Movie Magic Works" tours at the castle, showing families how projections and special effects created the illusion. He always made sure to mention that his hoax had been uncovered by "the legendary Harley Pack."</p>
+
+                <p>Billy still spent most of his time sitting at the base of his favourite tree in the village, watching squirrels with patient fascination. But now, sometimes, the rest of the pack would come and sit with him, enjoying the quiet observation.</p>
+
+                <p>"What do you see?" Dillon asked one afternoon, joining Billy in his usual spot.</p>
+
+                <p>"That squirrel there," Billy said, pointing with his nose. "He's been storing nuts in the hollow of that branch for three days now. And that crow has been watching him, waiting for him to leave so it can steal some."</p>
+
+                <p>"You see whole stories happening," Dillon observed with approval.</p>
+
+                <p>"I suppose I do," Billy said thoughtfully. "I never thought of it that way."</p>
+
+                <p>"That's what makes you special," Dillon told him.</p>
+
+                <p>And Billy, small and shy and scared of so many things, finally believed it.</p>
+
+                <p>Because sometimes the quietest voices have the most important things to say. And sometimes the bravest thing you can do is be exactly who you are.</p>
+
+                <div style="text-align: center; margin: 40px 0; font-size: 1.5em; color: #667eea;">
+                    <strong>The End</strong>
+                </div>
+
+                <div style="text-align: center; font-style: italic; color: #764ba2; margin: 20px 0;">
+                    But the pack's adventures continue, and Billy will be there when they need him most...
+                </div>
+            </div>
+        </div>
         <!-- ABOUT PAGE -->
         <div id="about" class="page">
             <div class="about-content">
@@ -916,8 +1147,8 @@
         function downloadPDF(storyName) {
             const pdfFiles = {
                 'christmas': 'downloads/christmas-lights-mystery.pdf',
-                // Add more stories as you create them:
                 // 'phantom': 'downloads/phantom-of-corfe-castle.pdf',
+// Add more stories as you create them:
                 // 'sheep': 'downloads/missing-sheep-mystery.pdf',
             };
             
